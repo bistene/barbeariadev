@@ -5,6 +5,8 @@ create table if not exists public.barber_admins (
 );
 alter table public.barber_admins enable row level security;
 revoke all on public.barber_admins from anon, authenticated;
+grant select on public.barber_admins to authenticated;
+create policy "admins see own membership" on public.barber_admins for select to authenticated using(user_id=(select auth.uid()));
 create table if not exists public.barber_bookings (
  id uuid primary key default gen_random_uuid(),
  customer_name text not null check(length(trim(customer_name)) between 2 and 80),
