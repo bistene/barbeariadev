@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded',()=>{
  function valid(){if(step===0){if(!service.value){window.siteNotify('Escolha um serviço para continuar.');return false}}if(step===1){if(!date.value||!document.querySelector('#slots .slot[aria-pressed="true"]')){window.siteNotify('Escolha uma data e um horário disponível.');return false}}if(step===2){const name=document.getElementById('customer');if(!name.value.trim()){name.focus();return false}if(phone.value.replace(/\D/g,'').length<10){phone.focus();window.siteNotify('Informe seu WhatsApp com DDD.');return false}}return true}
  next.addEventListener('click',()=>{if(valid()&&step<3)go(step+1)});back.addEventListener('click',()=>{if(step>0)go(step-1)});
  document.querySelectorAll('.service-choice').forEach(b=>b.addEventListener('click',()=>{next.disabled=false}));
- form.addEventListener('submit',e=>{if(step!==3){e.preventDefault();if(valid())go(step+1)}},true);
+ form.addEventListener('submit',e=>{if(step!==3||moving){e.preventDefault();e.stopImmediatePropagation();if(!moving&&valid())go(step+1)}},true); form.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('input:not([type="radio"]),select')&&step!==3){e.preventDefault();if(!moving&&valid())go(step+1)}});
  render();
 });
 </script></body></html>
