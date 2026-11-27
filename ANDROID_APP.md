@@ -28,7 +28,7 @@ Para atualizar o conteúdo web após alterações no site:
 
 ```bash
 npm run android:sync
-`
+```
 
 ## Gerar arquivo para publicação
 
