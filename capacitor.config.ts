@@ -4,11 +4,7 @@ const config: CapacitorConfig = {
   appId: 'br.com.barbeariadomeupai',
   appName: 'Barbearia do Meu Pai',
   webDir: 'www',
-  bundledWebRuntime: false,
-  android: {
-    backgroundColor: '#f7f7f5',
-    allowMixedContent: false
-  }
+  backgroundColor: '#f7f7f5',
 };
 
 export default config;
